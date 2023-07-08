@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl6i103c5of84"]
+
+[ext_resource type="Script" path="res://Test.gd" id="1_vu6qr"]
+[ext_resource type="Texture2D" uid="uid://3vaj80s3w6mt" path="res://icon.svg" id="2_p6kq2"]
+
+[sub_resource type="Animation" id="Animation_0hcsr"]
+resource_name = "test"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(82, 293), Vector2(1059, 285)]
+}
+
+[sub_resource type="Animation" id="Animation_gxw48"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(82, 293)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e0l8c"]
+_data = {
+"RESET": SubResource("Animation_gxw48"),
+"test": SubResource("Animation_0hcsr")
+}
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_vu6qr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e0l8c")
+}
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(82, 293)
+texture = ExtResource("2_p6kq2")
