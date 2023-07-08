@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@onready var animation_player = $Node2D/AnimationPlayer
+@onready var animation_player = find_child("AnimationPlayer")
 
 
 func _ready():
